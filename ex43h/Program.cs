@@ -5,30 +5,44 @@
 
 Console.Clear();
 
-void FindIntersection (int argB1, int argK1, int argB2, int argK2)
+void FindIntersection (double k1, double b1, double k2, double b2)
 {
-    int coordinateX = 0;
-    int coordinateY = 0;
-    if(argK1 == argK2)
+    // float X = 0;
+    // float Y = 0;
+    if(k1 == k2 && b1 == b2)
     {
-        System.Console.WriteLine("Прямые параллельны или не пересекаются!");
+        System.Console.WriteLine("Прямые имеют бесконечное количество точек пересечения");
+        return;
     }
-    else if(argK1 != argK2)
+    else if(k1 == k2)
     {
-        coordinateX = (argB2 - argB1) / (argK1 - argK2);
-        coordinateY = argK2 * coordinateX + argB2;
+        System.Console.WriteLine("Прямые параллельны");
+        return;
     }
-    System.Console.Write($"[" + coordinateX + "; " + coordinateY + "]");
+    else if(k1 != k2)
+    {
+        double X = (b2 - b1) / (k1 - k2);
+        double Y = k1 * X + b1;
+        System.Console.Write($"[" + X + "; " + Y + "]");
+    }    
 }
 
 System.Console.WriteLine("Прямая задается уравнением y = kx + b, найдем точку пересечения двух прямых");
 System.Console.WriteLine("Введите коэфициент K для первой прямой?");
-int argK1 = int.Parse(Console.ReadLine());
+string help1;
+help1 = Console.ReadLine();
+double k1 = float.Parse(help1);
 System.Console.WriteLine("Введите коэфициент B для первой прямой?");
-int argB1 = int.Parse(Console.ReadLine());
+string help2;
+help2 = Console.ReadLine();
+double b1 = float.Parse(help2);
 System.Console.WriteLine("Введите коэфициент K для второй прямой?");
-int argK2 = int.Parse(Console.ReadLine());
+string help3;
+help3 = Console.ReadLine();
+double k2 = float.Parse(help3);
 System.Console.WriteLine("Введите коэфициент B для второй прямой?");
-int argB2 = int.Parse(Console.ReadLine());
-System.Console.Write("Координата точек пересечения ваших прямых: ");
-FindIntersection(argK1, argB1, argK2, argB2);
+string help4;
+help4 = Console.ReadLine();
+double b2 = float.Parse(help4);
+System.Console.Write("Координата точки пересечения ваших прямых: ");
+FindIntersection(k1, b1, k2, b2);
